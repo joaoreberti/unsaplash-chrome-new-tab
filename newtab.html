@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Tab</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #background-overlay {
+        background-color: black;
+      }
+    }
+
+    @media (prefers-color-scheme: light) {
+      #background-overlay {
+        background-color: white;
+      }
+    }
+
+    img {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    img.loaded {
+      opacity: 1;
+    }
+
+    img.loaded + #background-overlay {
+      opacity: 0;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      color: white;
+      padding-top: 20px;
+    }
+
+    .image-info {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 5px;
+      z-index: 3;
+    }
+
+    .image-info a {
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <img id="background-image">
+  <div id="background-overlay"></div>
+  <div class="image-info">
+    <span id="author"></span><br>
+    <span id="location"></span><br>
+    <a id="unsplash-link" href="#" target="_blank">View on Unsplash</a><br>
+    <span id="description"></span>
+  </div>
+  <script src="newtab.js"></script>
+</body>
+</html>
